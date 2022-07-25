@@ -15,7 +15,7 @@ outputs:
     dtype: byte
     vlen: 80
 asserts:
-- ${ len(short_name) => 4 }
+- ${ 0 <= short_name <= 32}
 
 templates:
     imports: import nrsc5
