@@ -18,30 +18,30 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef INCLUDED_NRSC5_SIS_ENCODER_IMPL_H
-#define INCLUDED_NRSC5_SIS_ENCODER_IMPL_H
+#ifndef INCLUDED_NRSC5_FOX_ENCODER_IMPL_H
+#define INCLUDED_NRSC5_FOX_ENCODER_IMPL_H
 
-#include <nrsc5/sis_encoder.h>
+#include <nrsc5/fox_encoder.h>
 
 namespace gr {
   namespace nrsc5 {
 
-    class sis_encoder_impl : public sis_encoder
+    class fox_encoder_impl : public fox_encoder
     {
      private:
       unsigned int alfn;
-      std::string short_name;
+      std::string long_name;
       unsigned char *bit;
 
       int crc12(unsigned char *sis);
       void write_bit(int b);
       void write_int(int n, int len);
       void write_char5(char c);
-      void write_station_name_short();
+      void write_station_name_long();
 
      public:
-      sis_encoder_impl(const std::string &short_name="ABCD BOOP");
-      ~sis_encoder_impl();
+      fox_encoder_impl(const std::string &long_name="ABCD BOOP");
+      ~fox_encoder_impl();
 
       // Where all the action really happens
       int work(int noutput_items,
@@ -52,4 +52,4 @@ namespace gr {
   } // namespace nrsc5
 } // namespace gr
 
-#endif /* INCLUDED_NRSC5_SIS_ENCODER_IMPL_H */
+#endif /* INCLUDED_NRSC5_FOX_ENCODER_IMPL_H */

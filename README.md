@@ -1,13 +1,12 @@
 gr-nrsc5
 ========
 
-This project implements an HD Radio transmitter in GNU Radio.
-HD Radio is standardized in NRSC-5. The latest version of the
+The goal of this project is to implement an HD Radio receiver and transmitter
+in GNU Radio. HD Radio is standardized in NRSC-5. The latest version of the
 standard is NRSC-5-D, which can be found at
 https://www.nrscstandards.org/standards-and-guidelines/documents/standards/nrsc-5-d/nrsc-5-d.asp.
 
-If you're interested in receiving HD Radio, a stand-alone receiver for RTL-SDR
-is available here: https://github.com/theori-io/nrsc5/
+So far only a transmitter has been implemented. A stand-alone receiver for RTL-SDR is available here: https://github.com/theori-io/nrsc5/
 
 ## Installation
 

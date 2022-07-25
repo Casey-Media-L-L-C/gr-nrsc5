@@ -23,7 +23,7 @@ from gnuradio import gr, gr_unittest
 from gnuradio import blocks
 import nrsc5_swig as nrsc5
 
-class qa_l1_fm_encoder(gr_unittest.TestCase):
+class qa_fox_encoder(gr_unittest.TestCase):
 
     def setUp(self):
         self.tb = gr.top_block()
@@ -38,4 +38,4 @@ class qa_l1_fm_encoder(gr_unittest.TestCase):
 
 
 if __name__ == '__main__':
-    gr_unittest.run(qa_l1_fm_encoder)
+    gr_unittest.run(qa_fox_encoder)

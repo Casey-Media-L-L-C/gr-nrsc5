@@ -19,18 +19,48 @@
 # Boston, MA 02110-1301, USA.
 
 ########################################################################
-# Setup dependencies
+# Check if there is C++ code at all
 ########################################################################
-find_package(Doxygen)
+if(NOT nrsc5_sources)
+    MESSAGE(STATUS "No C++ sources... skipping swig/")
+    return()
+endif(NOT nrsc5_sources)
 
 ########################################################################
-# Begin conditional configuration
+# Include swig generation macros
 ########################################################################
-if(ENABLE_DOXYGEN)
+find_package(SWIG)
+find_package(PythonLibs)
+if(NOT SWIG_FOUND OR NOT PYTHONLIBS_FOUND)
+    return()
+endif()
+include(GrSwig)
+include(GrPython)
 
 ########################################################################
-# Add subdirectories
+# Setup swig generation
 ########################################################################
-add_subdirectory(doxygen)
+set(GR_SWIG_INCLUDE_DIRS $<TARGET_PROPERTY:gnuradio::runtime_swig,INTERFACE_INCLUDE_DIRECTORIES>)
+set(GR_SWIG_TARGET_DEPS gnuradio::runtime_swig)
 
-endif(ENABLE_DOXYGEN)
+set(GR_SWIG_LIBRARIES gnuradio-nrsc5)
+
+set(GR_SWIG_DOC_FILE ${CMAKE_CURRENT_BINARY_DIR}/nrsc5_swig_doc.i)
+set(GR_SWIG_DOC_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/../include)
+
+GR_SWIG_MAKE(nrsc5_swig nrsc5_swig.i)
+
+########################################################################
+# Install the build swig module
+########################################################################
+GR_SWIG_INSTALL(TARGETS nrsc5_swig DESTINATION ${GR_PYTHON_DIR}/nrsc5)
+
+########################################################################
+# Install swig .i files for development
+########################################################################
+install(
+    FILES
+    nrsc5_swig.i
+    ${CMAKE_CURRENT_BINARY_DIR}/nrsc5_swig_doc.i
+    DESTINATION ${GR_INCLUDE_DIR}/nrsc5/swig
+)

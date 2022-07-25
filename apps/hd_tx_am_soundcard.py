@@ -6,7 +6,7 @@
 #
 # GNU Radio Python Flow Graph
 # Title: Hd Tx Am Soundcard
-# GNU Radio version: 3.9.0.0
+# GNU Radio version: 3.8.2.0
 
 from gnuradio import audio
 from gnuradio import blocks
@@ -24,12 +24,10 @@ import math
 import nrsc5
 
 
-
-
 class hd_tx_am_soundcard(gr.top_block):
 
     def __init__(self):
-        gr.top_block.__init__(self, "Hd Tx Am Soundcard", catch_exceptions=True)
+        gr.top_block.__init__(self, "Hd Tx Am Soundcard")
 
         ##################################################
         # Variables
@@ -42,8 +40,8 @@ class hd_tx_am_soundcard(gr.top_block):
         self.rational_resampler_xxx_1 = filter.rational_resampler_ccc(
                 interpolation=128,
                 decimation=135,
-                taps=[],
-                fractional_bw=-1.0)
+                taps=None,
+                fractional_bw=None)
         self.nrsc5_sis_encoder_0 = nrsc5.sis_encoder('ABCD')
         self.nrsc5_psd_encoder_0 = nrsc5.psd_encoder(0, 'Title', 'Artist')
         self.nrsc5_l2_encoder_0 = nrsc5.l2_encoder(1, 0, 3750)
@@ -56,7 +54,7 @@ class hd_tx_am_soundcard(gr.top_block):
                 audio_rate,
                 4500,
                 1000,
-                window.WIN_HAMMING,
+                firdes.WIN_HAMMING,
                 6.76))
         self.fft_vxx_0 = fft.fft_vcc(256, False, window.rectangular(256), True, 1)
         self.blocks_wavfile_source_1 = blocks.wavfile_source('sample_mono.wav', True)
@@ -111,7 +109,8 @@ class hd_tx_am_soundcard(gr.top_block):
     def set_audio_rate(self, audio_rate):
         self.audio_rate = audio_rate
         self.blocks_delay_0.set_dly(int(self.audio_rate * 5.5))
-        self.low_pass_filter_1.set_taps(firdes.low_pass(0.5, self.audio_rate, 4500, 1000, window.WIN_HAMMING, 6.76))
+        self.low_pass_filter_1.set_taps(firdes.low_pass(0.5, self.audio_rate, 4500, 1000, firdes.WIN_HAMMING, 6.76))
+
 
 
 
