@@ -13,9 +13,8 @@ parameters:
 outputs:
 -   domain: stream
     dtype: byte
-    vlen: 80
 asserts:
-- ${ len(short_name) == 4 }
+- ${ len(short_name) }
 
 templates:
     imports: import nrsc5

@@ -13,6 +13,7 @@
 #include "nrsc5/l1_am_encoder.h"
 #include "nrsc5/l2_encoder.h"
 #include "nrsc5/psd_encoder.h"
+#include "nrsc5/sis_encoder.h"
 #include "nrsc5/fox_encoder.h"
 %}
 
@@ -26,5 +27,7 @@ GR_SWIG_BLOCK_MAGIC2(nrsc5, l1_am_encoder);
 GR_SWIG_BLOCK_MAGIC2(nrsc5, l2_encoder);
 %include "nrsc5/psd_encoder.h"
 GR_SWIG_BLOCK_MAGIC2(nrsc5, psd_encoder);
+%include "nrsc5/sis_encoder.h"
+GR_SWIG_BLOCK_MAGIC2(nrsc5, sis_encoder);
 %include "nrsc5/fox_encoder.h"
 GR_SWIG_BLOCK_MAGIC2(nrsc5, fox_encoder);

@@ -148,11 +148,11 @@ namespace gr {
     void
     sis_encoder_impl::write_station_name_short()
     {
-      write_int(STATION_NAME_SHORT, 4);
+      write_int(STATION_NAME_LONG, 4);
       for (int i = 0; i < 4; i++) {
         write_char5(short_name[i]);
       }
-      write_int(EXTENSION_FM, 2);
+      // write_int(EXTENSION_FM, 2);
     }
 
   } /* namespace nrsc5 */
