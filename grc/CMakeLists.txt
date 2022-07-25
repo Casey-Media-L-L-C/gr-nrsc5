@@ -32,6 +32,6 @@ install(FILES
     nrsc5_l1_am_encoder_ma3.block.yml
     nrsc5_l2_encoder.block.yml
     nrsc5_psd_encoder.block.yml
+    nrsc5_fox_encoder.block.yml
     nrsc5_sis_encoder.block.yml DESTINATION share/gnuradio/grc/blocks
-    nrsc5_fox_encoder.block.yml DESTINATION share/gnuradio/grc/blocks
 )
