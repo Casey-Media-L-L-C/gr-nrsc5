@@ -28,6 +28,5 @@ install(FILES
     l1_am_encoder.h
     l2_encoder.h
     psd_encoder.h
-    fox_encoder.h
     sis_encoder.h DESTINATION include/nrsc5
 )

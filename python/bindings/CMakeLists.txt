@@ -33,8 +33,7 @@ list(APPEND nrsc5_python_files
     l1_fm_encoder_python.cc
     l2_encoder_python.cc
     psd_encoder_python.cc
-    sis_encoder_python.cc python_bindings.cc
-    fox_encoder_python.cc)
+    sis_encoder_python.cc python_bindings.cc)
 
 GR_PYBIND_MAKE_OOT(nrsc5
    ../..
